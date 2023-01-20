@@ -35,6 +35,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    Article.destroy(params[:id])
+    redirect_to articles_path, status: :see_other
+  end
+
   private
 
   def article_params
