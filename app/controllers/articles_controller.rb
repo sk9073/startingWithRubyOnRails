@@ -4,6 +4,12 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @article_comment = Article.joins(:comments).where("comments.article_id IS NOT NULL").uniq
+
+    respond_to do |format|
+      format.html 
+      format.json {render :json => @articles}
+    end
   end
 
   def show

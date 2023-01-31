@@ -9,4 +9,10 @@ class Article < ApplicationRecord
   before_create do
     self.title = title.capitalize
   end
+  after_create :status_print
+  
+  private
+    def status_print
+      print "An article has been cretaed"
+    end
 end
